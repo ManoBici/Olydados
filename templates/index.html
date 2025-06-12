@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Consulta de Atletas</title>
+</head>
+<body>
+    <h1>Filtrar Dados</h1>
+    <form method="post">
+        {% for filtro in filtros %}
+            <label>{{ filtro }}:</label>
+            <input type="text" name="{{ filtro }}"><br>
+        {% endfor %}
+        <button type="submit">Buscar</button>
+    </form>
+
+    <h2>Resultados</h2>
+    <table border="1">
+        {% for linha in resultados %}
+            <tr>
+                {% for valor in linha %}
+                    <td>{{ valor }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
