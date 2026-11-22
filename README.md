@@ -6,6 +6,7 @@ A Python desktop application built to explore, filter, and visualize historical 
 ![CustomTkinter](https://img.shields.io/badge/GUI-CustomTkinter-1f6aa5?style=flat)
 ![SQLite](https://img.shields.io/badge/Database-SQLite-003B57?style=flat&logo=sqlite&logoColor=white)
 ![Matplotlib](https://img.shields.io/badge/Charts-Matplotlib-11557c?style=flat)
+![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 
 ---
 
@@ -29,19 +30,19 @@ A Python desktop application built to explore, filter, and visualize historical 
 
 ## ✨ Features
 
-- **Modern Home Interface (`pag_inicial.py`)**: Dark theme with custom-drawn Olympic rings, feature highlights, and quick navigation between modules.
-- **Data Exploration & Filtering (`tela_exploracao_dados.py`)**:
+- **Modern Home Interface (`main.py`)**: Dark theme with custom-drawn Olympic rings, feature highlights, and quick navigation between modules.
+- **Data Exploration & Filtering (`data_explorer.py`)**:
   - Dynamically filter records by **Country**, **Sport**, **Medal Type** (`Gold`, `Silver`, `Bronze`, `NA`), and **Year**.
   - Color-coded medal cells and paginated results table (30 records per page) with live record counters.
-- **Interactive Analytics Dashboard (`tela_dashboard.py`)**:
+- **Interactive Analytics Dashboard (`dashboard.py`)**:
   - **Summary KPI Cards**: Total medals awarded, participating nations, sports competed, and athletes in the most recent edition.
   - **Games Evolution Chart**: Dual-axis line chart tracking athletes and participating countries over time.
   - **Gender Distribution**: Pie chart comparing unique male and female athletes.
   - **Top 10 Countries**: Grouped bar chart ranking nations by Gold, Silver, and Bronze medals.
   - **Interactive Host Cities Globe**: Orthographic world map with hover tooltips for Summer Olympics host cities *(powered by Cartopy, gracefully skipped if not installed)*.
   - **Top Sports & Recent Editions**: Dynamic SQLite breakdown of top medal-awarding sports, iconic Olympic highlights, and summaries of the latest editions.
-- **CSV-to-SQLite Loader (`DATABASE.PY`)**: Automatically creates and populates the local `banco.db` SQLite database from `banco.csv`.
-- **Flask Web Prototype (`app.PY`)**: Lightweight web interface for querying the same SQLite database by any column.
+- **CSV-to-SQLite Loader (`database.py`)**: Automatically creates and populates the local `banco.db` SQLite database from `banco.csv`.
+- **Flask Web Interface (`app.py`)**: Lightweight web interface for querying the same SQLite database by any column.
 
 ---
 
@@ -51,7 +52,7 @@ A Python desktop application built to explore, filter, and visualize historical 
 - **Desktop UI:** CustomTkinter & Tkinter
 - **Data Visualization:** Matplotlib, NumPy, Cartopy & Shapely *(optional, for the globe map)*
 - **Database:** SQLite (`sqlite3`)
-- **Web Prototype:** Flask (`app.PY` + `templates/index.html`)
+- **Web Interface:** Flask (`app.py` + `templates/index.html`)
 - **Data Source:** Public Kaggle Olympic Games Dataset (1896–2016)
 
 ---
@@ -59,17 +60,18 @@ A Python desktop application built to explore, filter, and visualize historical 
 ## 📂 Project Structure
 
 ```text
-Olydados-main/
-├── pag_inicial.py            # Main entry point (Home screen & navigation)
-├── tela_exploracao_dados.py  # Paginated data exploration & multi-filter view
-├── tela_dashboard.py         # Analytics dashboard with charts & world map
-├── DATABASE.PY               # Script to convert banco.csv into banco.db (SQLite)
-├── app.PY                    # Optional Flask web search interface
+Olydados/
+├── main.py              # Main entry point (Home screen & navigation)
+├── data_explorer.py     # Paginated data exploration & multi-filter view
+├── dashboard.py         # Analytics dashboard with charts & world map
+├── database.py          # Script to convert banco.csv into banco.db (SQLite)
+├── app.py               # Optional Flask web search interface
 ├── templates/
-│   └── index.html            # HTML template for the Flask interface
-├── dash.py                   # Standalone dashboard prototype
-├── tabela_filtragem.py       # Standalone filter table prototype
-└── lerdb.py                  # Early Tkinter SQLite viewer prototype
+│   └── index.html       # HTML template for the Flask interface
+├── requirements.txt     # Python dependencies
+├── .gitignore           # Git ignore rules
+├── LICENSE              # MIT License
+└── README.md            # Project documentation
 ```
 
 ---
@@ -85,40 +87,36 @@ Olydados-main/
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/Olydados.git
+   git clone https://github.com/ManoBici/Olydados.git
    cd Olydados
    ```
 
-2. Install the required dependencies:
+2. Install the dependencies:
    ```bash
-   pip install customtkinter matplotlib numpy
+   pip install -r requirements.txt
    ```
 
-3. *(Optional)* Install **Cartopy** and **Shapely** to enable the interactive host cities globe map in the dashboard:
-   ```bash
-   pip install cartopy shapely
-   ```
+   > **Note:** `cartopy` and `shapely` are optional and only required for the interactive host cities globe map on the dashboard. If they are unavailable on your system, you can install the core packages with `pip install customtkinter matplotlib numpy flask`.
 
-4. Generate the SQLite database (`banco.db`) from `banco.csv`:
+3. Generate the SQLite database (`banco.db`) from `banco.csv`:
    ```bash
-   python DATABASE.PY
+   python database.py
    ```
 
 ### Running the Application
 
 Launch the desktop application:
 ```bash
-python pag_inicial.py
+python main.py
 ```
 
-*(Optional)* To run the Flask web query prototype:
+*(Optional)* Run the Flask web search interface:
 ```bash
-pip install flask
-python app.PY
+python app.py
 ```
 
 ---
 
 ## 📄 License
 
-This project is open source and available for educational and portfolio purposes.
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.

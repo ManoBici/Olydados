@@ -1,0 +1,8 @@
+customtkinter>=5.2.0
+matplotlib>=3.8.0
+numpy>=1.26.0
+flask>=3.0.0
+
+# Optional: interactive host cities globe map in the dashboard
+cartopy>=0.22.0
+shapely>=2.0.0
